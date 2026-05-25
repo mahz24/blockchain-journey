@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(where make *)",
+      "Bash(where mingw32-make *)",
+      "Bash(where choco *)",
+      "Bash(where scoop *)",
+      "Bash(where winget *)",
+      "Bash(where git *)",
+      "Bash(\"C:\\\\Program Files\\\\Git\\\\usr\\\\bin\\\\make.exe\" --version)",
+      "Bash(dir \"C:\\\\Program Files\\\\Git\\\\usr\\\\bin\\\\make*\")",
+      "PowerShell(Get-ExecutionPolicy *)",
+      "PowerShell(Set-ExecutionPolicy *)",
+      "PowerShell(scoop install *)",
+      "PowerShell(make *)",
+      "PowerShell(Select-String *)"
+    ]
+  }
+}
