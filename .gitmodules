@@ -1,0 +1,3 @@
+[submodule "foundry-fundamentals/smart-contract-lottery"]
+	path = foundry-fundamentals/smart-contract-lottery
+	url = https://github.com/mahz24/smart-contract-lottery.git
