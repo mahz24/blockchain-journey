@@ -64,7 +64,7 @@ Primary learning platform: [Cyfrin Updraft](https://updraft.cyfrin.io)
 > Each project lives in its own repository and is referenced here as a Git submodule.
 > To check them out locally, clone with submodules enabled:
 > ```bash
-> git clone --recurse-submodules https://github.com/mahz24/blockchain-journay.git
+> git clone --recurse-submodules https://github.com/mahz24/blockchain-journey.git
 > ```
 
 ### Completed
