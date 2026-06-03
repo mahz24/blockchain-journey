@@ -61,7 +61,19 @@ Primary learning platform: [Cyfrin Updraft](https://updraft.cyfrin.io)
 
 ## 📦 Projects
 
-> Projects will be added here as they are completed. Each one includes a deployed testnet address and full test coverage.
+> Each project lives in its own repository and is referenced here as a Git submodule.
+> To check them out locally, clone with submodules enabled:
+> ```bash
+> git clone --recurse-submodules https://github.com/mahz24/blockchain-journay.git
+> ```
+
+### Completed
+
+- [x] **[Smart Contract Lottery](./foundry-fundamentals/smart-contract-lottery)** —
+  Provably fair on-chain raffle built with Foundry and Chainlink VRF v2.5.
+  Verifiable randomness, Chainlink Automation-compatible upkeep, 14/14 unit and
+  fuzz tests, CI on GitHub Actions.
+  Repo: [github.com/mahz24/smart-contract-lottery](https://github.com/mahz24/smart-contract-lottery)
 
 ### Coming Soon
 - [ ] ERC-20 Token with mint/burn/pause logic
@@ -76,6 +88,7 @@ Primary learning platform: [Cyfrin Updraft](https://updraft.cyfrin.io)
 | Date | Milestone |
 |------|-----------|
 | April 2026 | Started Cyfrin Updraft — Blockchain Basics |
+| June 2026 | Shipped first portfolio project: Smart Contract Lottery with Chainlink VRF v2.5 |
 
 ---
 
