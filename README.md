@@ -88,7 +88,8 @@ Primary learning platform: [Cyfrin Updraft](https://updraft.cyfrin.io)
 | Date | Milestone |
 |------|-----------|
 | April 2026 | Started Cyfrin Updraft — Blockchain Basics |
-| June 2026 | Shipped first portfolio project: Smart Contract Lottery with Chainlink VRF v2.5 |
+| May–June 2026 | Completed Foundry Fundamentals |
+| June 2026 | Smart Contract Lottery deployed and verified on Sepolia ([0x9AE9…E64c](https://sepolia.etherscan.io/address/0x9ae9092c92bb7dce6ffef68db4d717d5760be64c)) |
 
 ---
 
