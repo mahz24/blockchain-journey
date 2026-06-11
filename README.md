@@ -31,7 +31,7 @@ Target timeline: **5–6 months** to job-ready.
 |-------|-------|--------|
 | 1 | Blockchain Basics — Cyfrin Updraft |  Done |
 | 2 | Solidity Fundamentals | Done |
-| 3 | Foundry Fundamentals — testing & deployment | In Progress |
+| 3 | Foundry Fundamentals — testing & deployment | Done |
 | 4 | Full-Stack Web3 — contracts + Next.js | ⏳ Upcoming |
 | 5 | Portfolio projects (ERC-20, DEX, DeFi protocol) | ⏳ Upcoming |
 | 6 | Smart Contract Security & Auditing | ⏳ Upcoming |
