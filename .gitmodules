@@ -1,3 +1,6 @@
 [submodule "foundry-fundamentals/smart-contract-lottery"]
 	path = foundry-fundamentals/smart-contract-lottery
 	url = https://github.com/mahz24/smart-contract-lottery.git
+[submodule "defi/defi-escrow"]
+	path = defi/defi-escrow
+	url = https://github.com/mahz24/defi-escrow.git
