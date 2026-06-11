@@ -69,6 +69,12 @@ Primary learning platform: [Cyfrin Updraft](https://updraft.cyfrin.io)
 
 ### Completed
 
+- [x] **[DeFi Escrow](./defi/defi-escrow)** —
+  Decentralized escrow protocol with arbiter-mediated dispute resolution,
+  pull-payment pattern, and time-based refunds. 53 tests, 100% line / branch /
+  function coverage, custom errors, CEI compliance, CI on GitHub Actions.
+  Repo: [github.com/mahz24/defi-escrow](https://github.com/mahz24/defi-escrow)
+
 - [x] **[Smart Contract Lottery](./foundry-fundamentals/smart-contract-lottery)** —
   Provably fair on-chain raffle built with Foundry and Chainlink VRF v2.5.
   Verifiable randomness, Chainlink Automation-compatible upkeep, 14/14 unit and
@@ -90,6 +96,7 @@ Primary learning platform: [Cyfrin Updraft](https://updraft.cyfrin.io)
 | April 2026 | Started Cyfrin Updraft — Blockchain Basics |
 | May–June 2026 | Completed Foundry Fundamentals |
 | June 2026 | Smart Contract Lottery deployed and verified on Sepolia ([0x9AE9…E64c](https://sepolia.etherscan.io/address/0x9ae9092c92bb7dce6ffef68db4d717d5760be64c)) |
+| June 2026 | DeFi Escrow deployed and verified on Sepolia ([0x6eF1…3A5C](https://sepolia.etherscan.io/address/0x6ef18b176d1d67aaf73f05413077b9842fe83a5c)) |
 
 ---
 
