@@ -4,3 +4,12 @@
 [submodule "defi/defi-escrow"]
 	path = defi/defi-escrow
 	url = https://github.com/mahz24/defi-escrow.git
+[submodule "foundry-advanced/defi-stablecoin/lib/openzeppelin-contracts"]
+	path = foundry-advanced/defi-stablecoin/lib/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts
+[submodule "foundry-advanced/defi-stablecoin/lib/foundry-chainlink-toolkit"]
+	path = foundry-advanced/defi-stablecoin/lib/foundry-chainlink-toolkit
+	url = https://github.com/smartcontractkit/foundry-chainlink-toolkit
+[submodule "foundry-advanced/defi-stablecoin/lib/chainlink-brownie-contracts"]
+	path = foundry-advanced/defi-stablecoin/lib/chainlink-brownie-contracts
+	url = https://github.com/smartcontractkit/chainlink-brownie-contracts
