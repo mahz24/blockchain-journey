@@ -23,24 +23,24 @@ contract DSCEngineTest is Test {
     function setUp() external {
         deployer = new DeployDSC();
         (dsc, engine, config) = deployer.run();
-        (ethUsdPriceFeed, , weth, , ) = config.activeNetworkConfig();
+        (ethUsdPriceFeed,, weth,,) = config.activeNetworkConfig();
 
         ERC20Mock(weth).mint(USER, AMOUNT_TO_MINT);
     }
 
-    function testGetUsdValue() public view{
-      uint256 ethAmount = 15e18;
-      uint256 expectedUsd = 30000e18;
-      uint256 actualUsd = engine.getUsdValue(weth, ethAmount);
-      assertEq(expectedUsd, actualUsd);
+    function testGetUsdValue() public view {
+        uint256 ethAmount = 15e18;
+        uint256 expectedUsd = 30000e18;
+        uint256 actualUsd = engine.getUsdValue(weth, ethAmount);
+        assertEq(expectedUsd, actualUsd);
     }
 
     function testRevertIfCollateralZero() public {
-      vm.startPrank(USER);
-      ERC20Mock(weth).approve(address(engine), AMOUNT_COLLATERAL);
+        vm.startPrank(USER);
+        ERC20Mock(weth).approve(address(engine), AMOUNT_COLLATERAL);
 
-      vm.expectRevert(DSCEngine.DSCEngine__NeedsMoreThanZero.selector);
-      engine.depositCollateral(weth, 0);
-      vm.stopPrank();
-    } 
+        vm.expectRevert(DSCEngine.DSCEngine__NeedsMoreThanZero.selector);
+        engine.depositCollateral(weth, 0);
+        vm.stopPrank();
+    }
 }
