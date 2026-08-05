@@ -70,6 +70,7 @@ contract DSCEngine is ReentrancyGuard {
 
     // Events
     event CollateralDeposited(address indexed user, address indexed token, uint256 amount);
+    event CollateralRedeemed(address indexed user, address indexed token, uint256 amount);
 
     // Modifiers
     modifier moreThanZero(uint256 _amount) {
@@ -99,9 +100,14 @@ contract DSCEngine is ReentrancyGuard {
         i_dsc = DecentralizedStableCoin(_dscAddress);
     }
 
-    // external functions
-    function depositCollateralAndMintDsc() external {
-        // deposit collateral and mint DSC
+    /**
+     * @param _token token address to deposit as collateral
+     * @param _amount amount of collateral to deposit
+     * @param _amountToMint amount of DSC to mint
+     */
+    function depositCollateralAndMintDsc(address _token, uint256 _amount, uint256 _amountToMint) external {
+        depositCollateral(_token, _amount);
+        mintDsc(_amountToMint);
     }
 
     /**
@@ -110,7 +116,7 @@ contract DSCEngine is ReentrancyGuard {
      * @param _amount The amount of collateral to deposit
      */
     function depositCollateral(address _token, uint256 _amount)
-        external
+        public
         moreThanZero(_amount)
         isAllowedToken(_token)
         nonReentrant
@@ -121,14 +127,34 @@ contract DSCEngine is ReentrancyGuard {
         if (!success) {
             revert DSCEngine__TransferFailed();
         }
+        _revertIfHealthFactorIsBroken(msg.sender);
     }
 
-    function redeemCollateralForDsc() external {
-        // redeem collateral for DSC
+
+    /** 
+     * @notice this function allows users to redeem their collateral by burning their DSC. The amount of collateral that can be redeemed is based on the amount of DSC that is burned and the current price of the collateral.
+     * @param _token The address of the token to redeem as collateral
+     * @param _amount The amount of collateral to redeem
+     * @param _amountToBurn The amount of DSC to burn
+     */
+    function redeemCollateralForDsc(address _token, uint256 _amount, uint256 _amountToBurn) external {
+        burnDsc(_amountToBurn);
+        redeemCollateral(_token, _amount);
+        // reddemCollateral and burnDsc are both nonReentrant, so we don't need to add it here
     }
 
-    function redeemCollateral() external {
-        // redeem collateral
+    /**
+     * @notice this function allows users to redeem their collateral without burning their DSC. The amount of collateral that can be redeemed is based on the amount of DSC that is minted and the current price of the collateral.
+     * @param _token The address of the token to redeem as collateral
+     * @param _amount The amount of collateral to redeem
+     */
+    function redeemCollateral(address _token, uint256 _amount) public moreThanZero(_amount) isAllowedToken(_token) nonReentrant {
+        s_collateralDeposited[msg.sender][_token] -= _amount;
+        emit CollateralRedeemed(msg.sender, _token, _amount);
+        bool success = IERC20(_token).transfer(msg.sender, _amount);
+        if (!success) {
+            revert DSCEngine__TransferFailed();
+        }
     }
 
     /**
@@ -136,7 +162,7 @@ contract DSCEngine is ReentrancyGuard {
      * @notice they must have more collateral value than the minimum threshold
      * @param _amountToMint  The amout of decentralized stablecoin to mint
      */
-    function mintDsc(uint256 _amountToMint) external moreThanZero(_amountToMint) nonReentrant {
+    function mintDsc(uint256 _amountToMint) public moreThanZero(_amountToMint) nonReentrant {
         s_DSCMinted[msg.sender] += _amountToMint;
         _revertIfHealthFactorIsBroken(msg.sender);
         bool minted = i_dsc.mint(msg.sender, _amountToMint);
@@ -145,8 +171,14 @@ contract DSCEngine is ReentrancyGuard {
         }
     }
 
-    function burnDsc() external {
-        // burn DSC
+    function burnDsc(uint256 _amount) public moreThanZero(_amount) {
+        s_DSCMinted[msg.sender] -= _amount;
+        bool success = i_dsc.transferFrom(msg.sender, address(this), _amount);
+        if (!success) {
+            revert DSCEngine__TransferFailed();
+        }
+        i_dsc.burn(_amount);
+        _revertIfHealthFactorIsBroken(msg.sender);
     }
 
     function liquidate() external {
